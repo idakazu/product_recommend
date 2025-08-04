@@ -78,7 +78,7 @@ def display_product(result):
     elif stock_status == '残りわずか':
         st.warning(f"{basic_info}\n            ⚠️ こ好評につき、在庫が残りわずかです。購入をご希望の場合、お早めのご注文をおすすめいたいます。")
     elif stock_status == 'なし':
-        st.error(f"{basic_info}\n             申し訳ございませんが、本商品は在庫切れとなっております。入荷までもうしばらくお待ちください。")
+        st.error(f"{basic_info}\n            ❌ 申し訳ございませんが、本商品は在庫切れとなっております。入荷までもうしばらくお待ちください。")
     else:
         st.info(f"{basic_info}\n            ❓ 在庫状況不明")
 
