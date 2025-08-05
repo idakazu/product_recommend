@@ -63,24 +63,23 @@ def display_product(result):
 
     st.markdown("以下の商品をご提案いたします。")
 
-    # 「商品名」と「価格」と「在庫状況」
-    stock_status = product.get('stock_status', '不明')
-    
-    # 基本情報の表示
-    basic_info = f"""
+    # 「商品名」と「価格」
+    st.success(f"""
             商品名：{product['name']}（商品ID: {product['id']}）\n
             価格：{product['price']}
-    """
+    """)
+
+    # 在庫状況を背景色付きで表示
+    stock_status = product.get('stock_status', '不明')
     
-    # 在庫状況によって表示と背景色を変える
     if stock_status == 'あり':
-        st.success(f"{basic_info}\n            ✅ 在庫あり")
+        st.success("✅ 在庫あり")
     elif stock_status == '残りわずか':
-        st.warning(f"{basic_info}\n            ⚠️ こ好評につき、在庫が残りわずかです。購入をご希望の場合、お早めのご注文をおすすめいたいます。")
+        st.warning("⚠️ ご好評につき、在庫が残りわずかです。購入をご希望の場合、お早めのご注文をおすすめいたします。")
     elif stock_status == 'なし':
-        st.error(f"{basic_info}\n            ❌ 申し訳ございませんが、本商品は在庫切れとなっております。入荷までもうしばらくお待ちください。")
+        st.error("❌ 申し訳ございませんが、本商品は在庫切れとなっております。入荷までもうしばらくお待ちください。")
     else:
-        st.info(f"{basic_info}\n            ❓ 在庫状況不明")
+        st.info("❓ 在庫状況不明")
 
     # 「商品カテゴリ」と「メーカー」と「ユーザー評価」
     st.code(f"""
